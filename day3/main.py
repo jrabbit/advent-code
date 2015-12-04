@@ -34,7 +34,29 @@ def main(data):
 
 
 def part2(data):
-    pass
+    position_santa = Coordinate(0,0)
+    position_robot = Coordinate(0,0)
+    presents = {Coordinate(0,0)}
+    for pos, char in enumerate(data):
+        if pos % 2:
+            position = position_robot
+        else:
+            position = position_santa
+        if char == "^":
+            position.y += 1
+        elif char == "v":
+            position.y -= 1
+        elif char == ">":
+            position.x += 1
+        elif char == "<":
+            position.x -= 1
+        # print position
+        presents.add((position.x, position.y))
+        # can't add position because we keep changing it!
+        # print presents
+    print position_santa
+    print position_robot
+    print len(presents)
 
 if __name__ == '__main__':
     data = open("input.txt").read()
