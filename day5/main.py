@@ -22,7 +22,8 @@ def is_nice(s):
     return True
 
 def is_nice2(s):
-    pass
+    pattern = re.compile(ur'([a-z]{2}).*\1')
+
 
 def main(data):
     # naughty = 0
