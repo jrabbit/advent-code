@@ -1,3 +1,4 @@
+import re
 import itertools
 
 def is_nice(s):
@@ -22,7 +23,14 @@ def is_nice(s):
     return True
 
 def is_nice2(s):
+    # Not my regex.
     pattern = re.compile(ur'([a-z]{2}).*\1')
+    pattern2 = re.compile(r'([a-z]).(\1)')
+    #end not my regex
+    if pattern.search(s) and pattern2.search(s):
+        return True
+    else:
+        return False
 
 
 def main(data):
@@ -38,7 +46,15 @@ def main(data):
     return nice
 
 def part2(data):
-    pass
+    nice = 0
+    for l in data:
+        if is_nice2(l):
+            # print l
+            nice += 1
+        else:
+            pass
+            # print "naughty"
+    return nice
 
 if __name__ == '__main__':
     with open("input.txt") as f:
