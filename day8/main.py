@@ -9,20 +9,22 @@ def main(data):
         code = len(ast.literal_eval(l))
         in_mem += len(l)
         in_code += code
-    print  in_mem - in_code
+    return  in_mem - in_code
 
 def part2(data):
     in_orig = 0
     in_repr = 0
     for line in data:
         l = line.strip() #remove newlines
-        code = len(repr(l))+2 # Python auto wraps in '' which isn't counted
+        # this doesn't work why?
+        code = len(l)+l.count('\\')+2+l.count(r'"') # Python auto wraps in '' which isn't counted
+        # print(l.count('\\'), l.count(r'"'),l.count(r'\\'))
         in_orig += len(l)
         in_repr += code
-    print  in_repr - in_orig
+    return  in_repr - in_orig
 
 if __name__ == '__main__':
     with open("input.txt") as f:
         data = f.readlines()
-        main(data)
-        part2(data)
+        print(main(data))
+        print(part2(data))
