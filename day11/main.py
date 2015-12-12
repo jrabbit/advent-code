@@ -1,3 +1,4 @@
+import re
 
 next_d = {"a": "b",
           "b": "c",
@@ -24,7 +25,10 @@ next_d = {"a": "b",
           "z": "a"}
 
 def validator(password):
+    p = re.compile(ur'^a*b*c*d*e*f*g*h*i*j*k*l*m*n*o*p*q*r*s*t*u*v*w*x*y*z*$')
     if 'i' in password or 'l' in password or 'o' in password:
+        return False
+    if not re.match(p, password):
         return False
 
 def main(inp):
